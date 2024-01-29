@@ -1,0 +1,112 @@
+<ob-column-layout [left]="false">
+	<ng-container column-main-content>
+		<form [formGroup]="formGroup" [class.ob-form-sm]="true">
+			<fieldset>
+				<legend>Selection Geometry</legend>
+				<mat-form-field obErrorMessages>
+					<mat-label>Export Polygon</mat-label>
+					<input matInput placeholder="Insert Polygon with WGS84 Coordinates" formControlName="polygon" />
+					<mat-error>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field appearance="fill">
+					<mat-label>Layers</mat-label>
+					<mat-select [formControl]="layers" multiple>
+						<mat-option *ngFor="let layer of options?.layers" [value]="layer">{{layer}}</mat-option>
+					</mat-select>
+				</mat-form-field>
+				<mat-form-field obErrorMessages>
+					<mat-label>Temporal Reference</mat-label>
+					<mat-select formControlName="temporalReference">
+						<mat-option *ngFor="let temporalReferenceOption of options?.temporalReferences"
+							[value]="temporalReferenceOption">
+							{{ temporalReferenceOption }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						<!--<span *ngIf="registerFormControl['format'].touched && registerFormControl['format'].errors?.['required']"> Format is required </span>-->
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field obErrorMessages>
+					<mat-label>Masking Color</mat-label>
+					<mat-select formControlName="maskingColor">
+						<mat-option *ngFor="let maskingOption of options?.maskingColors" [value]="maskingOption">
+							{{ maskingOption }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						<!--<span *ngIf="registerFormControl['format'].touched && registerFormControl['format'].errors?.['required']"> Format is required </span>-->
+					</mat-error>
+				</mat-form-field>
+
+				<mat-form-field obErrorMessages>
+					<mat-label>Mosaic and Clip</mat-label>
+					<mat-select formControlName="mosaiking">
+						<mat-option *ngFor="let mosaicOption of options?.mosaics" [value]="mosaicOption">
+							{{ mosaicOption }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						<!--<span *ngIf="registerFormControl['format'].touched && registerFormControl['format'].errors?.['required']"> Format is required </span>-->
+					</mat-error>
+				</mat-form-field>
+			</fieldset>
+			<fieldset>
+				<legend>Processing</legend>
+				<mat-form-field obErrorMessages>
+					<mat-label>Resample Method</mat-label>
+					<mat-select formControlName="resamplingMethod">
+						<mat-option *ngFor="let resampleOption of options?.resamplingMethods" [value]="resampleOption">
+							{{ resampleOption }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						<!--<span *ngIf="registerFormControl['format'].touched && registerFormControl['format'].errors?.['required']"> Format is required </span>-->
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field obErrorMessages>
+					<mat-label>Resample Factor</mat-label>
+					<mat-select formControlName="resamplingFactor">
+						<mat-option *ngFor="let resampleFactorOption of options?.resamplingFactors"
+							[value]="resampleFactorOption">
+							{{ resampleFactorOption }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						<!--<span *ngIf="registerFormControl['format'].touched && registerFormControl['format'].errors?.['required']"> Format is required </span>-->
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field obErrorMessages>
+					<mat-label>Export Format</mat-label>
+					<mat-select formControlName="exportFormat">
+						<mat-option *ngFor="let exportOption of options?.formats" [value]="exportOption">
+							{{ exportOption }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						<!--<span *ngIf="registerFormControl['format'].touched && registerFormControl['format'].errors?.['required']"> Format is required </span>-->
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field obErrorMessages>
+					<mat-label>JPEG Quality</mat-label>
+					<input matInput placeholder="JPEG Quality" formControlName="jpegQuality" />
+					<mat-error>
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field obErrorMessages>
+					<mat-label>Resample Shifts</mat-label>
+					<mat-select formControlName="referenceShift">
+						<mat-option *ngFor="let referenceShiftOption of options?.referenceShifts"
+							[value]="referenceShiftOption">
+							{{ referenceShiftOption }}
+						</mat-option>
+					</mat-select>
+					<mat-error>
+						<!--<span *ngIf="registerFormControl['format'].touched && registerFormControl['format'].errors?.['required']"> Format is required </span>-->
+					</mat-error>
+				</mat-form-field>
+			</fieldset>
+			<button mat-raised-button color="primary" type="submit">Export</button>
+		</form>
+	</ng-container>
+</ob-column-layout>
